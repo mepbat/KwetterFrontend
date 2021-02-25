@@ -1,0 +1,7 @@
+<div class="tweets-container">
+    <div class="tweets" *ngFor="let item of tweets">
+      <label>{{item.text}}</label>
+      <br>
+      <label>{{item.date.toUTCString() | timeAgo}}</label>
+    </div>
+</div>
