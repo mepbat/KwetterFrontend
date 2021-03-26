@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {TokenStorageService} from '../shared/services/token-storage/token-storage.service';
+import {TweetService} from '../shared/services/tweet/tweet.service';
 
 @Component({
   selector: 'app-start',
@@ -7,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StartComponent implements OnInit {
 
-  constructor() { }
+  constructor(private tokenService:  TokenStorageService, private tweetService: TweetService) { }
 
   ngOnInit(): void {
   }
+
 
 }

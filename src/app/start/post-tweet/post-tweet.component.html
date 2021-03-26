@@ -1,0 +1,13 @@
+<div class="wrapper">
+  <div class="tweet-modal d-inline-flex">
+    <form (ngSubmit)="newTweet()">
+      <label>Tweet Now!</label>
+      <br>
+      <label>
+<textarea placeholder="What's Happening?" class="tweet-text form-control" name="tweet-text"
+          [(ngModel)]="tweet.text" maxlength="140"></textarea>
+      </label>
+      <button class="post-button" type="submit" mat-button>Post</button>
+    </form>
+  </div>
+</div>

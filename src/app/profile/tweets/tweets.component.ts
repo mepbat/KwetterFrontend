@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {tweet} from '../../../models/tweet';
+import {tweet} from '../../shared/models/tweet';
 
 @Component({
   selector: 'app-tweets',
@@ -8,13 +8,13 @@ import {tweet} from '../../../models/tweet';
 })
 export class TweetsComponent implements OnInit {
   date:Date = new Date();
-  tweets: tweet[] = [];
+  tweet : tweet = {id: 1, text: "tweeeeet",date: new Date()};
+  tweets: tweet[] = [this.tweet,this.tweet,this.tweet,this.tweet,this.tweet,this.tweet,this.tweet,this.tweet,this.tweet,this.tweet,this.tweet,this.tweet,this.tweet,this.tweet,this.tweet];
   constructor() { }
 
   ngOnInit(): void {
-    let tweet : tweet = {text: "tweeeeet",date: new Date()};
-    for(let i = 0; i <10; i++){
-      this.tweets.push(tweet);
-    }
+    this.tweets.sort(function (a, b) {
+      return a.date.getTime() - b.date.getTime()
+    });
   }
 }

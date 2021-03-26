@@ -1,1 +1,34 @@
-<p>login works!</p>
+<link rel="stylesheet" href="login.component.css">
+<div class="wrapper">
+  <div class="login-card">
+    <div class="login-form">
+
+      <div class="login-container">
+        <div class="title-div">
+          <h2 class="login-title"><strong>Welcome to</strong> <br>Kwetter</h2>
+        </div>
+        <form (ngSubmit)="login()">
+          <mat-form-field>
+            <mat-label>Username</mat-label>
+            <input matInput placeholder="username" [(ngModel)]="credentials.username" name="username" required>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text' " [(ngModel)]="credentials.password" name="password"
+                   required>
+            <button type="button" mat-icon-button matSuffix (click)="hide=! hide " [attr.aria-label]=" 'Hide password' "
+                    [attr.aria-pressed]="!hide ">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+          <br>
+          <button mat-button class="btn-login" type="submit">Login</button>
+        </form>
+        <button mat-button class="btn-register" (click)="navigateToRegister()">Go to Register</button>
+      </div>
+    </div>
+  </div>
+  <div class="image">
+    <img src="../../assets/KwetterLogo.png" alt="Kwetter Logo" (click)="navigateToHome()">
+  </div>
+</div>
