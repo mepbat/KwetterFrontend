@@ -31,4 +31,8 @@ export class NavigationComponent implements OnInit {
   navigateToLogin(): void{
     this.router.navigate(['login'])
   }
+
+  navigateToProfile(): void{
+    this.router.navigate(['profile', this.tokenStorage.getUsername()])
+  }
 }

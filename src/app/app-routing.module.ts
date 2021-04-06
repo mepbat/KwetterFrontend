@@ -7,10 +7,9 @@ import {LoginComponent} from './login/login.component';
 import {AuthguardService} from './shared/services/authGuard/authguard.service';
 
 const routes: Routes = [
-  {path: '', component: StartComponent},
+  {path: '', component: StartComponent, canActivate: [AuthguardService]},
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'profile', component: ProfileComponent, canActivate: [AuthguardService]},
   {path: 'profile/:username', component: ProfileComponent, canActivate: [AuthguardService]},
   {path: '**', redirectTo: ''}];
 

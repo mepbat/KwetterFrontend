@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {tweet} from '../../shared/models/tweet';
+import {Component, Input, OnInit} from '@angular/core';
+import {Tweet} from '../../shared/models/tweet';
+import {TweetService} from '../../shared/services/tweet/tweet.service';
+import {Account} from '../../shared/models/account';
 
 @Component({
   selector: 'app-tweets',
@@ -7,14 +9,21 @@ import {tweet} from '../../shared/models/tweet';
   styleUrls: ['./tweets.component.css']
 })
 export class TweetsComponent implements OnInit {
-  date:Date = new Date();
-  tweet : tweet = {id: 1, text: "tweeeeet",date: new Date()};
-  tweets: tweet[] = [this.tweet,this.tweet,this.tweet,this.tweet,this.tweet,this.tweet,this.tweet,this.tweet,this.tweet,this.tweet,this.tweet,this.tweet,this.tweet,this.tweet,this.tweet];
-  constructor() { }
+  @Input() account = {} as Account;
+  tweets = [] as Tweet[]
+  constructor(private tweetService: TweetService) { }
 
   ngOnInit(): void {
-    this.tweets.sort(function (a, b) {
-      return a.date.getTime() - b.date.getTime()
-    });
+    if(this.account.username != null) {
+      this.tweetService.getMostRecentTweetsByUsername(this.account.username).subscribe(
+        data => {
+          console.log(data);
+          this.tweets = data;
+        },
+        error => {
+          console.log(error);
+        }
+      )
+    }
   }
 }

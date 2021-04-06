@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Account} from '../../shared/models/account';
 
 @Component({
   selector: 'app-basic-info',
@@ -6,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./basic-info.component.css']
 })
 export class BasicInfoComponent implements OnInit {
-  profileName: string = "Simon";
+  @Input() account = {} as Account
+
   //fileToUpload: File = null;
 
   constructor() { }

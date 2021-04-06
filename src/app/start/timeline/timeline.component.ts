@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {TokenStorageService} from '../../shared/services/token-storage/token-storage.service';
 import {TweetService} from '../../shared/services/tweet/tweet.service';
-import {tweet} from '../../shared/models/tweet';
+import {Tweet} from '../../shared/models/tweet';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-timeline',
@@ -10,20 +11,31 @@ import {tweet} from '../../shared/models/tweet';
 })
 export class TimelineComponent implements OnInit {
 
-  tweets = [] as tweet[];
+  tweets = [] as Tweet[];
+  private subscriptionName: Subscription; //important to create a subscription
 
-  constructor(private tokenService:  TokenStorageService, private tweetService: TweetService) { }
-
-  ngOnInit(): void {
-    this.tweetService.getTimeline().subscribe(
-      data => {
-        console.log(data);
-        this.tweets = data;
-    },
+  constructor(private tokenService:  TokenStorageService, private tweetService: TweetService) {
+    this.subscriptionName = this.tweetService.getUpdate().subscribe(
+      message => {
+        message = new Tweet(message['id'], message['text'], message['date'], message['username'])
+        this.tweets.unshift(message);
+        this.tweets.pop();
+      },
       error => {
         console.log(error);
       }
-      )
+    )
   }
 
+  ngOnInit(): void {
+    this.subscriptionName = this.tweetService.getTimeline().subscribe(
+      data => {
+        console.log(data);
+        this.tweets = data;
+      },
+      error => {
+        console.log(error);
+      }
+    )
+  }
 }

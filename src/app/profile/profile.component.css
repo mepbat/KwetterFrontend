@@ -1,0 +1,16 @@
+.wrapper{
+  width: 80%;
+  margin-left: 10%;
+  display: flex;
+}
+
+.basic-info{
+
+}
+
+.details{
+  border: 1px solid grey;
+  margin-top: 10px;
+  width: 30%;
+  margin-left: auto;
+}

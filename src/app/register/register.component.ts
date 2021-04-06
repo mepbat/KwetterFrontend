@@ -4,6 +4,7 @@ import {TokenStorageService} from '../shared/services/token-storage/token-storag
 import {ActivatedRoute, Router} from '@angular/router';
 import {AppComponent} from '../app.component';
 import {Credentials} from '../shared/models/credentials';
+import {TweetService} from '../shared/services/tweet/tweet.service';
 
 @Component({
   selector: 'app-register',
@@ -17,7 +18,7 @@ export class RegisterComponent implements OnInit {
   isRegisterFailed: boolean = false;
   credentials!: Credentials;
 
-  constructor(private authService: AuthService, private tokenStorage: TokenStorageService, private router: Router, private route: ActivatedRoute, private appComp: AppComponent) { }
+  constructor(private authService: AuthService, private tokenStorage: TokenStorageService, private router: Router, private route: ActivatedRoute, private appComp: AppComponent, private tweetService: TweetService) { }
 
   ngOnInit(): void{
     this.credentials = new Credentials("","");
@@ -45,5 +46,4 @@ export class RegisterComponent implements OnInit {
   navigateToHome(): void{
     this.router.navigate(['']);
   }
-
 }

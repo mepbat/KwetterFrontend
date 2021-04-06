@@ -23,6 +23,7 @@ import {RouterModule} from '@angular/router';
 import { PostTweetComponent } from './start/post-tweet/post-tweet.component';
 import { TimelineComponent } from './start/timeline/timeline.component';
 import { MentionsComponent } from './start/mentions/mentions.component';
+import { TweetComponent } from './components/tweet/tweet.component';
 
 @Pipe({
   name: 'timeAgo',
@@ -49,6 +50,7 @@ export class TimeAgoExtendsPipe extends TimeAgoPipe {
     PostTweetComponent,
     TimelineComponent,
     MentionsComponent,
+    TweetComponent,
   ],
   imports: [
     BrowserModule,

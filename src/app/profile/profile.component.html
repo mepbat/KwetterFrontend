@@ -1,7 +1,14 @@
 <app-navigation></app-navigation>
-<p>profile works!</p>
-<app-basic-info></app-basic-info>
-<app-details></app-details>
-<app-followers></app-followers>
-<app-following></app-following>
-<app-tweets></app-tweets>
+<div class="wrapper">
+  <div class="basic-info">
+    <app-basic-info [account]="account"></app-basic-info>
+  </div>
+  <div class="details">
+    <app-details [account]="account"></app-details>
+  </div>
+  <app-followers></app-followers>
+  <app-following></app-following>
+  <div *ngIf="(account | json) != '{}'">
+    <app-tweets [account]="account"></app-tweets>
+  </div>
+</div>

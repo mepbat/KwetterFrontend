@@ -17,6 +17,7 @@
         {{username}}
       </a>
       <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+        <a *ngIf="loggedIn" class="dropdown-item" (click)="navigateToProfile()">Profile</a>
         <a *ngIf="loggedIn" class="dropdown-item" (click)="signOut()">Logout</a>
         <a *ngIf="!loggedIn" class="dropdown-item" (click)="navigateToLogin()">Login</a>
       </div>

@@ -1,19 +1,20 @@
 .basicInfo{
-  width: 30%;
-  padding: 20px 100px 10px 50px;
+  margin: 10px;
+  width: 30vw;;
+  height: 200px;
+  border: 1px solid grey;
   display: flex;
-  align-items: center;
-  background-color: lightgrey;
+  align-items:center;
 }
 
 .profileImage{
+  margin-left: 20px;
   height: 150px;
   width: 150px;
+  border-radius: 50%;
 }
 
-.profileName {
-  vertical-align: center;
-  display: inline-block;
-  margin: 0 auto;
+.username {
+  margin-left: 10px;
   font-size: 26px;
 }
