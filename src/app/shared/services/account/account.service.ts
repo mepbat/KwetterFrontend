@@ -2,8 +2,8 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Account} from '../../models/account';
 import {Observable} from 'rxjs';
+import {environment} from '../../../../environments/environment';
 
-const ACC_API = 'http://localhost:8500/account/'
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +15,6 @@ export class AccountService {
   }
 
   getAccountByUsername (username: string): Observable<Account>{
-    return this.http.get<Account>(ACC_API + 'getAccountByUsername/' +username)
+    return this.http.get<Account>(environment.api + 'account/' + 'getAccountByUsername/' +username)
   }
 }

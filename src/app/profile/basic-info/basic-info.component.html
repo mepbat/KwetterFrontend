@@ -1,4 +1,12 @@
 <div class="basicInfo">
   <img class="profileImage" src="../../../assets/Randomhead.jpg">
   <label class="username">@{{account.username}}</label>
+  <div *ngIf="!ownAccount">
+    <div *ngIf="isFollowing">
+      <button class="follow-button" (click)="unfollow()">Unfollow</button>
+    </div>
+    <div *ngIf="!isFollowing">
+      <button class="follow-button" (click)="follow()">Follow</button>
+    </div>
+  </div>
 </div>

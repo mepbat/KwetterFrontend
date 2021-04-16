@@ -8,15 +8,12 @@ import {Account} from '../shared/models/account';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent {
   account = {} as Account;
   private subject: any;
   username!: string;
 
   constructor(private route: ActivatedRoute, private accountService: AccountService, private router: Router) {
-  }
-
-  ngOnInit(): void {
     this.subject = this.route.params.subscribe(params => {
       this.username = params['username'];
     });

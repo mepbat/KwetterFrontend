@@ -18,3 +18,26 @@
   margin-left: 10px;
   font-size: 26px;
 }
+
+.follow-button {
+  border-color: rgb(29, 161, 242);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 9999px;
+  background-color: rgba(0, 0, 0, 0);
+  color: rgb(29, 161, 242);
+  min-width: calc(64.4px);
+  min-height: 40px;
+  outline-style: none;
+  transition-property: background-color, box-shadow;
+  transition-duration: 0.2s;
+  height: 0px;
+  user-select: none;
+  padding-left: 1em;
+  padding-right: 1em;
+  cursor: pointer;
+}
+
+.follow-button:hover {
+  background-color: rgba(29,161,242,0.1);
+}

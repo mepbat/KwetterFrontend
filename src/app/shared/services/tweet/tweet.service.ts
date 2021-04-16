@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Tweet} from '../../models/tweet';
 import {Observable, Subject} from 'rxjs';
-const TWEET_API = 'http://localhost:8500/tweet/'
+import {environment} from '../../../../environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -30,14 +30,14 @@ export class TweetService {
   }
 
   createTweet(tweet: Tweet): Observable<any> {
-    return this.http.post(TWEET_API, tweet, httpOptions);
+    return this.http.post(environment.api + 'tweet/', tweet, httpOptions);
   }
 
   getTimeline(): Observable<Tweet[]>{
-    return this.http.get<any>(TWEET_API, httpOptions);
+    return this.http.get<any>(environment.api + 'tweet/', httpOptions);
   }
 
   getMostRecentTweetsByUsername(username: string): Observable<Tweet[]>{
-    return this.http.get<any>(TWEET_API + 'getMostRecentTweetsByUsername/' + username, httpOptions)
+    return this.http.get<any>(environment.api + 'tweet/' + 'getMostRecentTweetsByUsername/' + username, httpOptions)
   }
 }

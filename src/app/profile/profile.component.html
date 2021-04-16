@@ -1,9 +1,9 @@
 <app-navigation></app-navigation>
 <div class="wrapper">
-  <div class="basic-info">
+  <div class="basic-info" *ngIf="(account | json) != '{}'">
     <app-basic-info [account]="account"></app-basic-info>
   </div>
-  <div class="details">
+  <div class="details" *ngIf="(account | json) != '{}'">
     <app-details [account]="account"></app-details>
   </div>
   <app-followers></app-followers>

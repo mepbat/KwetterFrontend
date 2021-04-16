@@ -17,7 +17,6 @@ export class TweetsComponent implements OnInit {
     if(this.account.username != null) {
       this.tweetService.getMostRecentTweetsByUsername(this.account.username).subscribe(
         data => {
-          console.log(data);
           this.tweets = data;
         },
         error => {
