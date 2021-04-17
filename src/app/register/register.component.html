@@ -7,7 +7,6 @@
           <h2 class="register-title"><strong>Welcome to</strong> <br>Kwetter</h2>
         </div>
         <form (ngSubmit)="register()">
-          <mat-label>{{errorMessage}}</mat-label>
           <mat-form-field>
             <mat-label>Username</mat-label>
             <input matInput placeholder="username" [(ngModel)]="credentials.username" name="username" required>
@@ -21,6 +20,7 @@
               <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
           </mat-form-field>
+          <mat-error class="error-message" *ngIf="errorMessage != ''">{{errorMessage}}</mat-error>
           <br>
           <button mat-button class="btn-register" type="submit">Register</button>
         </form>
