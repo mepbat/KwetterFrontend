@@ -13,7 +13,8 @@ import {TimelineComponent} from '../timeline/timeline.component';
 export class PostTweetComponent implements OnInit {
   tweet = {} as Tweet;
 
-  constructor(private tokenService:  TokenStorageService, private tweetService: TweetService) { }
+  constructor(private tokenService:  TokenStorageService, private tweetService: TweetService) {
+  }
 
   ngOnInit(): void {
   }
@@ -24,7 +25,6 @@ export class PostTweetComponent implements OnInit {
     this.tweet.username = this.tokenService.getUsername()
     this.tweetService.createTweet(this.tweet).subscribe(
       data => {
-        console.log(data);
         this.tweetService.sendUpdate(data);
       },
       error => {

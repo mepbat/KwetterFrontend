@@ -43,7 +43,7 @@ export class BasicInfoComponent implements OnChanges {
   follow(): void {
     this.followService.follow(this.fol).subscribe(
       data => {
-        console.log(data);
+        this.followService.sendUpdate(data);
         this.isFollowing = true;
         this.fol.id = data.id;
       },
@@ -54,11 +54,11 @@ export class BasicInfoComponent implements OnChanges {
   }
 
   unfollow(): void {
-    console.log(this.fol);
     this.fol.accountId = Number(this.tokenService.getId());
     this.fol.followingAccountId = this.account.id;
     this.followService.unfollow(this.fol).subscribe(
       data => {
+        this.followService.sendUpdate(data);
         this.isFollowing = false;
       },
       error => {

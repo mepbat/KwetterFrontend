@@ -10,3 +10,7 @@
 .tweet-text{
   word-wrap: anywhere;
 }
+
+.tweet-username{
+  cursor: pointer;
+}

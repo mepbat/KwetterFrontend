@@ -1,16 +1,39 @@
 .wrapper{
   width: 80%;
   margin-left: 10%;
-  display: flex;
 }
 
 .basic-info{
+  display: inline-block;
 
 }
 
 .details{
+  display: inline-block;
   border: 1px solid grey;
   margin-top: 10px;
   width: 30%;
   margin-left: auto;
+}
+
+.followers{
+  width: 40%;
+  margin-left: auto;
+  border: 1px solid grey;
+}
+
+.following{
+  width: 40%;
+  margin-left: auto;
+  border: 1px solid grey;
+/*  margin-top: 10px;
+  width: 30%;
+  margin-left: auto;*/
+}
+
+.tweet{
+  display: block;
+  margin-top: 25px;
+  margin-left: 20px;
+  width: 500px;
 }

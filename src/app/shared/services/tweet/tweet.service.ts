@@ -33,11 +33,15 @@ export class TweetService {
     return this.http.post(environment.api + 'tweet/', tweet, httpOptions);
   }
 
-  getTimeline(): Observable<Tweet[]>{
-    return this.http.get<any>(environment.api + 'tweet/', httpOptions);
+  getTimeline(ids: number[]): Observable<Tweet[]>{
+    return this.http.get<any>(environment.api + 'tweet/' + ids, httpOptions);
   }
 
   getMostRecentTweetsByUsername(username: string): Observable<Tweet[]>{
     return this.http.get<any>(environment.api + 'tweet/' + 'getMostRecentTweetsByUsername/' + username, httpOptions)
+  }
+
+  getLastTweet(username: string): Observable<Tweet>{
+    return this.http.get<any>(environment.api + 'tweet/' + 'getLastTweet/' + username, httpOptions)
   }
 }

@@ -3,6 +3,9 @@ import {Account} from '../../shared/models/account';
 import {TokenStorageService} from '../../shared/services/token-storage/token-storage.service';
 import {FollowService} from '../../shared/services/follow/follow.service';
 import {Router} from '@angular/router';
+import {Subscription} from 'rxjs';
+import {Tweet} from '../../shared/models/tweet';
+import {Follow} from '../../shared/models/follow';
 
 @Component({
   selector: 'app-following',
@@ -16,6 +19,8 @@ export class FollowingComponent implements OnChanges {
   constructor(private tokenService: TokenStorageService, private followService: FollowService, private router: Router) {
 
   }
+
+
 
   ngOnChanges(): void {
     this.followService.getFollowing(this.account.id.toString()).subscribe(

@@ -7,3 +7,15 @@
   margin-left: 10%;
   margin-right: 10%;
 }
+
+.last-tweet{
+  display: inline-block;
+  width: 40%;
+  float: right;
+}
+
+.post-tweet{
+  display: inline-block;
+  width: 40%;
+}
+

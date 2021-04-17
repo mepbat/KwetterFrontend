@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Follow} from '../../models/follow';
-import {Observable} from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 import {environment} from '../../../../environments/environment';
 
 const httpOptions = {
@@ -16,13 +16,22 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class FollowService {
+  private subjectName = new Subject<any>(); //need to create a subject
 
   constructor(
     private http: HttpClient
   ) {
   }
 
-  follow (follow: Follow): Observable<Follow>{
+  sendUpdate(message: string) { //the component that wants to update something, calls this fn
+    this.subjectName.next(message); //next() will feed the value in Subject
+  }
+
+  getUpdate(): Observable<any> { //the receiver component calls this function
+    return this.subjectName.asObservable(); //it returns as an observable to which the receiver funtion will subscribe
+  }
+
+  follow (follow: Follow): Observable<any>{
     return this.http.post<Follow>(environment.api + 'follow/', follow)
   }
 
