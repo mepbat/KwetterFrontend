@@ -1,26 +1,35 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnInit} from '@angular/core';
 import {Account} from '../../shared/models/account';
 import {TokenStorageService} from '../../shared/services/token-storage/token-storage.service';
 import {FollowService} from '../../shared/services/follow/follow.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-following',
   templateUrl: './following.component.html',
   styleUrls: ['./following.component.css']
 })
-export class FollowingComponent implements OnInit {
+export class FollowingComponent implements OnChanges {
   @Input() account = {} as Account;
   following = [] as Account[];
 
-  constructor(private tokenService: TokenStorageService, private followService: FollowService) {
-/*    this.followService.getFollowing(this.account.id.toString()).subscribe(
-      data => {
-        this.following = data;
-      }
-    );*/
+  constructor(private tokenService: TokenStorageService, private followService: FollowService, private router: Router) {
+
   }
 
-  ngOnInit(): void {
+  ngOnChanges(): void {
+    this.followService.getFollowing(this.account.id.toString()).subscribe(
+      data => {
+        this.following = data as Account[];
+      }, error => {
+        console.log(error);
+      }
+    );
+  }
+
+  navigateToUser(username: string){
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+      this.router.navigate(['profile', username]));
   }
 
 }

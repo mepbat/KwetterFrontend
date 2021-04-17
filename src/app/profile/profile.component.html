@@ -6,9 +6,12 @@
   <div class="details" *ngIf="(account | json) != '{}'">
     <app-details [account]="account"></app-details>
   </div>
-  <app-followers></app-followers>
-  <app-following></app-following>
-  <div *ngIf="(account | json) != '{}'">
+  <div class="followers" *ngIf="(account | json) != '{}'">
+    <app-followers [account]="account"></app-followers>
+  </div>
+  <div class="following" *ngIf="(account | json) != '{}'">
+    <app-following [account]="account"></app-following>
+  </div>  <div *ngIf="(account | json) != '{}'">
     <app-tweets [account]="account"></app-tweets>
   </div>
 </div>

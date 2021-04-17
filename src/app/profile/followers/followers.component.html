@@ -1,1 +1,8 @@
-<p>followers works!</p>
+<div class="followers">
+  <div *ngFor="let account of followers">
+    <div class="follow">
+      <a (click)="navigateToUser(account.username)">{{account.username}}</a>
+    </div>
+  </div>
+</div>
+
