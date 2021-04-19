@@ -15,6 +15,10 @@ export class AccountService {
   }
 
   getAccountByUsername (username: string): Observable<Account>{
-    return this.http.get<Account>(environment.api + 'account/' + 'getAccountByUsername/' +username)
+    return this.http.get<Account>(environment.api + 'account/' + 'getAccountByUsername/' +username);
+  }
+
+  saveAccount(account: Account): Observable<any> {
+    return this.http.put<Account>(environment.api + 'account/', account);
   }
 }

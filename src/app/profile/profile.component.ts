@@ -31,4 +31,9 @@ export class ProfileComponent {
       )
     }
   }
+
+  navigateToEditProfile(){
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+      this.router.navigate(['edit-profile']));
+  }
 }

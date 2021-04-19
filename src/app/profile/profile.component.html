@@ -15,4 +15,5 @@
   <div class="tweet" *ngIf="(account | json) != '{}'">
     <app-tweets [account]="account"></app-tweets>
   </div>
+  <button mat-button (click)="navigateToEditProfile()">Edit Profile</button>
 </div>

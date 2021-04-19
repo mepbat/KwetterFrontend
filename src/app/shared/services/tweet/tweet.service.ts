@@ -26,7 +26,7 @@ export class TweetService {
   }
 
   getUpdate(): Observable<any> { //the receiver component calls this function
-    return this.subjectName.asObservable(); //it returns as an observable to which the receiver funtion will subscribe
+    return this.subjectName.asObservable(); //it returns as an observable to which the receiver function will subscribe
   }
 
   createTweet(tweet: Tweet): Observable<any> {
@@ -34,7 +34,7 @@ export class TweetService {
   }
 
   getTimeline(ids: number[]): Observable<Tweet[]>{
-    return this.http.get<any>(environment.api + 'tweet/' + ids, httpOptions);
+    return this.http.post<any>(environment.api + 'tweet/getTimeline', ids, httpOptions);
   }
 
   getMostRecentTweetsByUsername(username: string): Observable<Tweet[]>{

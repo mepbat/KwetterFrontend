@@ -1,0 +1,22 @@
+<app-navigation></app-navigation>
+<div class="wrapper">
+  <div class="basic-info" *ngIf="(account | json) != '{}'">
+    <app-basic-info [account]="account"></app-basic-info>
+  </div>
+  <form (ngSubmit)="saveProfile()">
+  <div class="details">
+    <label>Location:
+      <input name="location" [(ngModel)]="account.location">
+    </label>
+    <br/>
+    <label>Web:
+      <input name="web" [(ngModel)]="account.web">
+    </label>
+    <br/>
+    <label>Bio:
+      <input name="bio" [(ngModel)]="account.bio">
+    </label>
+  </div>
+    <button mat-button type="submit">Save</button>
+  </form>
+</div>

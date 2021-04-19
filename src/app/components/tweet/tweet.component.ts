@@ -8,16 +8,10 @@ import {Router} from '@angular/router';
   templateUrl: './tweet.component.html',
   styleUrls: ['./tweet.component.css']
 })
-export class TweetComponent implements OnInit {
+export class TweetComponent {
   @Input() tweet = {} as Tweet;
 
   constructor(private router: Router) {
-  }
-
-  ngOnInit(): void {
-    if(JSON.stringify(this.tweet) === '{}'){
-      console.log("AAAAA");
-    }
   }
 
   navigateToUser(username: string){

@@ -33,6 +33,7 @@ export class NavigationComponent implements OnInit {
   }
 
   navigateToProfile(): void{
-    this.router.navigate(['profile', this.tokenStorage.getUsername()])
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+      this.router.navigate(['profile', this.tokenStorage.getUsername()]))
   }
 }

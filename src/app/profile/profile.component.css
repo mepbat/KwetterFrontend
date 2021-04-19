@@ -13,7 +13,7 @@
   border: 1px solid grey;
   margin-top: 10px;
   width: 30%;
-  margin-left: auto;
+  float: right;
 }
 
 .followers{

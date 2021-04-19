@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {TokenStorageService} from '../../shared/services/token-storage/token-storage.service';
 import {TweetService} from '../../shared/services/tweet/tweet.service';
 import {Tweet} from '../../shared/models/tweet';
@@ -22,7 +22,9 @@ export class TimelineComponent implements OnInit {
       message => {
         message = new Tweet(message['id'], message['text'], message['date'], message['username'])
         this.tweets.unshift(message);
-        this.tweets.pop();
+        if(this.tweets.length > 10){
+          this.tweets.pop();
+        }
       },
       error => {
         console.log(error);
@@ -31,26 +33,26 @@ export class TimelineComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.followingIds.push(Number(this.tokenService.getId()));
     this.followService.getFollowing(this.tokenService.getId()).subscribe(
       data => {
         this.following = data as Account[];
         this.following.forEach(follow => {
           this.followingIds.push(follow.id);
         });
+        this.subscriptionName = this.tweetService.getTimeline(this.followingIds).subscribe(
+          data => {
+            this.tweets = data;
+          },
+          error => {
+            console.log(error);
+          }
+        )
         },
       error => {
         console.log(error);
       }
     )
-
-    this.subscriptionName = this.tweetService.getTimeline(this.followingIds).subscribe(
-      data => {
-        console.log(data);
-        this.tweets = data;
-      },
-      error => {
-        console.log(error);
-      }
-    )
   }
+
 }

@@ -13,7 +13,7 @@ import {Subscription} from 'rxjs';
 export class FollowersComponent implements OnChanges {
   @Input() account = {} as Account;
   followers = [] as Account[];
-  private subscriptionName: Subscription; //important to create a subscription
+  private subscriptionName: Subscription;
 
   constructor(private tokenService: TokenStorageService, private followService: FollowService, private router: Router) {
     this.subscriptionName = this.followService.getUpdate().subscribe(
@@ -24,10 +24,8 @@ export class FollowersComponent implements OnChanges {
           });
         } else{
           let acc = message['account'] as Account;
-          console.log(acc);
           this.followers.push(acc);
         }
-        //this.following.unshift(message);
       },
       error => {
         console.log(error);
