@@ -20,7 +20,8 @@ export class PostTweetComponent implements OnInit {
   }
 
   newTweet(): void {
-    this.tweet.date = new Date();
+    this.tweet.date = this.convertTZ(new Date, Intl.DateTimeFormat().resolvedOptions().timeZone)
+    console.log(this.tweet.date);
     this.tweet.id = parseInt(this.tokenService.getId());
     this.tweet.username = this.tokenService.getUsername()
     this.tweetService.createTweet(this.tweet).subscribe(
@@ -32,5 +33,9 @@ export class PostTweetComponent implements OnInit {
       }
     );
     this.tweet.text = '';
+  }
+
+  convertTZ(date: any, tzString: string) {
+    return new Date((typeof date === "string" ? new Date(date) : date).toLocaleString("en-US", {timeZone: tzString}));
   }
 }

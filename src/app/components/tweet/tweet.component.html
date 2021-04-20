@@ -1,6 +1,6 @@
 <div class="tweet">
   <b (click)="navigateToUser(tweet.username)" class="tweet-username">{{tweet.username}}</b>
-  <label class="tweet-date">{{tweet.date.toLocaleString() | timeAgo}}</label>
+  <label class="tweet-date">{{tweet.date.toISOString() | timeAgo}}</label>
   <br/>
   <label class="tweet-text">{{tweet.text}}</label>
 </div>
