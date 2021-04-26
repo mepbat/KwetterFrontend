@@ -1,6 +1,6 @@
 <app-navigation></app-navigation>
 <div class="wrapper">
-  <p class="tag">#{{tag}}</p>
+  <app-hashtag *ngIf="tag != ''" [tag]="tag"></app-hashtag>
   <div class="tweets" *ngFor="let tweet of tweets">
     <app-tweet *ngIf="(tweet | json) != '{}'" [tweet]="tweet"></app-tweet>
   </div>

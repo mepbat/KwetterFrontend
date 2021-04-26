@@ -33,7 +33,7 @@ export class TimelineComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.followingIds.push(Number(this.tokenService.getId()));
+    this.followingIds.push(+(this.tokenService.getId()));
     this.followService.getFollowing(this.tokenService.getId()).subscribe(
       data => {
         this.following = data as Account[];
