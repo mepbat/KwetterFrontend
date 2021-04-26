@@ -19,3 +19,12 @@
   width: 40%;
 }
 
+.mat-tab-group{
+  display: inline-block;
+}
+
+.trends{
+  display: inline-block;
+  width: 40%;
+  float: right;
+}

@@ -11,13 +11,15 @@ import {MentionService} from '../../shared/services/mention/mention.service';
 export class MentionsComponent implements OnInit {
   tweets = [] as Tweet[];
 
+
   constructor(private tokenService: TokenStorageService, private mentionService: MentionService) { }
 
   ngOnInit(): void {
     this.mentionService.getMentions(this.tokenService.getUsername()).subscribe(
       data => {
-        console.log(data);
-        this.tweets = data as Tweet[];
+        if(data !== null) {
+          this.tweets = data as Tweet[];
+        }
       },
       error => {
         console.log(error);

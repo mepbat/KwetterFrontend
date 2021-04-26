@@ -26,6 +26,8 @@ import { MentionsComponent } from './start/mentions/mentions.component';
 import { TweetComponent } from './components/tweet/tweet.component';
 import { LastTweetComponent } from './start/last-tweet/last-tweet.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { TrendsComponent } from './start/trends/trends.component';
+import { TagComponent } from './tag/tag.component';
 
 @Pipe({
   name: 'timeAgo',
@@ -55,6 +57,8 @@ export class TimeAgoExtendsPipe extends TimeAgoPipe {
     TweetComponent,
     LastTweetComponent,
     EditProfileComponent,
+    TrendsComponent,
+    TagComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,6 @@
+<div class="wrapper">
+  <b>Trends</b>
+  <div *ngFor="let trend of trends">
+    <label class="tag" *ngIf="trend.tag != ''">#{{trend.tag}}</label>
+  </div>
+</div>

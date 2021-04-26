@@ -45,5 +45,8 @@ export class TweetService {
     return this.http.get<any>(environment.api + 'tweet/' + 'getLastTweet/' + username, httpOptions)
   }
 
+  getTweetsByTag(tag: string): Observable<any>{
+    return this.http.get<any>(environment.api + 'tweet/' + 'getByTag/' + tag, httpOptions);
+  }
 
 }

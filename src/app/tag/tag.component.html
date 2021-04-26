@@ -1,0 +1,7 @@
+<app-navigation></app-navigation>
+<div class="wrapper">
+  <p class="tag">#{{tag}}</p>
+  <div class="tweets" *ngFor="let tweet of tweets">
+    <app-tweet *ngIf="(tweet | json) != '{}'" [tweet]="tweet"></app-tweet>
+  </div>
+</div>

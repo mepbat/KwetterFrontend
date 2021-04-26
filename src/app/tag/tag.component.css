@@ -1,0 +1,12 @@
+.wrapper{
+  margin-left: 10%;
+  width: 80%;
+}
+
+.tweets{
+  width: 500px;
+}
+
+.tag{
+  color: rgb(29, 161, 242);
+}

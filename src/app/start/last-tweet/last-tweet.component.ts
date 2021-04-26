@@ -28,7 +28,9 @@ export class LastTweetComponent implements OnInit {
   ngOnInit(): void {
     this.tweetService.getLastTweet(this.tokenService.getUsername()).subscribe(
       data => {
-        this.tweet = data as Tweet;
+        if(data !== null) {
+          this.tweet = data as Tweet;
+        }
       },error => {
         console.log(error);
       }
