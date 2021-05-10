@@ -11,3 +11,32 @@
 .dropdown-menu{
   cursor: pointer;
 }
+
+/*.search-results{
+  z-index: 100;
+  min-height: 50px;
+  font-size: 16px;
+}*/
+
+.search-results {
+  width: 33.33%;
+  float: left;
+  position: relative; /* <-- added declaration */
+}
+
+.search-results ul{
+  margin-top: 5px;
+  list-style-type: none;
+  height: 0px;
+  overflow: hidden;
+
+  position: absolute;  /* <-- added declarations */
+  left: 0; top: 100%;  /*     here               */
+  width: 100%;         /*     and here...        */
+
+  transition: height 1s ease;
+}
+
+/*.search-results{
+  position: absolute;
+}*/

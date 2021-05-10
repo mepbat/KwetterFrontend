@@ -4,6 +4,7 @@ import {TokenStorageService} from '../shared/services/token-storage/token-storag
 import {ActivatedRoute, Router} from '@angular/router';
 import {AppComponent} from '../app.component';
 import {Credentials} from '../shared/models/credentials';
+import {role} from '../shared/models/role';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +24,7 @@ export class LoginComponent implements OnInit {
   constructor(private authService: AuthService, private tokenStorage: TokenStorageService, private router: Router, private route: ActivatedRoute, private appComp: AppComponent) { }
 
   ngOnInit(): void {
-    this.credentials = new Credentials("","");
+    this.credentials = new Credentials(0,"", "", new role(0,""), true);
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 

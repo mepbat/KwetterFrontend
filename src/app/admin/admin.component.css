@@ -1,0 +1,19 @@
+.body{
+  background-color: white;
+  border-radius: 5px;
+  padding: 5%
+}
+
+.active {
+  color: grey;
+}
+
+.role {
+  color: grey;
+}
+
+mat-selection-list {
+  max-height: 250px;
+  width: 600px;
+  overflow: auto;
+}

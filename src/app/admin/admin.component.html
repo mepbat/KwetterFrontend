@@ -1,0 +1,17 @@
+<app-navigation></app-navigation>
+<div class="body">
+  <h3>Accounts</h3>
+  <input type="text" value="Filter on username" [(ngModel)]="searchName" (ngModelChange)="search()">
+  <mat-selection-list #list [(ngModel)]="selectedCredentials" >
+    <mat-list-option checkboxPosition="before" *ngFor="let credentials of credentialsShown" [value]="credentials">
+      <div class="row">
+      <span class="username col">{{credentials.username}}</span>
+      <span class="role col">{{credentials.role.name}}</span>
+      <span class="active col">{{credentials.active}}</span>
+      </div>
+    </mat-list-option>
+  </mat-selection-list>
+  <button (click)="activate()">Activate</button>
+  <button (click)="deactivate()">Deactivate</button>
+  <button (click)="promote()">Promote</button>
+</div>

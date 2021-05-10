@@ -21,4 +21,12 @@ export class AccountService {
   saveAccount(account: Account): Observable<any> {
     return this.http.put<Account>(environment.api + 'account/', account);
   }
+
+  searchAccounts(searchInput: string): Observable<any> {
+    return this.http.get<any>(environment.api + 'account/' + 'search/' + searchInput)
+  }
+
+  getAll(): Observable<any> {
+    return this.http.get<any>(environment.api + 'account')
+  }
 }

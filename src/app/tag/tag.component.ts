@@ -16,9 +16,11 @@ export class TagComponent {
   constructor(private route: ActivatedRoute, private tweetService: TweetService) {
     this.route.params.subscribe(params => {
       this.tag = params['tag'];
+      if(this.tag.charAt(0) == '#') {
+        this.tag = this.tag.substring(1);
+      }
       this.tweetService.getTweetsByTag(this.tag).subscribe(
         data => {
-          console.log(data);
           this.tweets = data as Tweet[];
         },
         error => {

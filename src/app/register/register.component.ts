@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {AppComponent} from '../app.component';
 import {Credentials} from '../shared/models/credentials';
 import {TweetService} from '../shared/services/tweet/tweet.service';
+import {role} from '../shared/models/role';
 
 @Component({
   selector: 'app-register',
@@ -21,7 +22,7 @@ export class RegisterComponent implements OnInit {
   constructor(private authService: AuthService, private tokenStorage: TokenStorageService, private router: Router, private route: ActivatedRoute, private appComp: AppComponent, private tweetService: TweetService) { }
 
   ngOnInit(): void{
-    this.credentials = new Credentials("","");
+    this.credentials = new Credentials(0,"", "", new role(0,""), true);
   }
 
   register(): void{

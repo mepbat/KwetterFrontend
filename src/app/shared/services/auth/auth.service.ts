@@ -31,6 +31,22 @@ export class AuthService {
     }, httpOptions);
   }
 
+  getAll(): Observable<any>{
+    return this.http.get(environment.api + 'credentials/' + 'getAll', httpOptions);
+  }
+
+  activate(username: string): Observable<any>{
+    return this.http.get(environment.api + 'credentials/' + 'activate/' + username, httpOptions);
+  }
+
+  deactivate(username: string): Observable<any> {
+    return this.http.get(environment.api + 'credentials/' + 'deactivate/' + username, httpOptions);
+  }
+
+  promote(username: string): Observable<any> {
+    return this.http.get(environment.api + 'credentials/' + 'promote/' + username, httpOptions);
+  }
+
 /*  getAccountId(): string {
     const token = this.tokenStorage.getToken();
     const tokenPayload = decode(token);

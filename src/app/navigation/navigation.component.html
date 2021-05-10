@@ -10,6 +10,10 @@
         <a class="nav-link" href="#">Home
           <span class="sr-only">(current)</span>
         </a>
+      <li *ngIf="role === 'admin'" class="nav-item active">
+        <a class="nav-link" (click)="navigateToAdmin()">Admin page
+          <span class="sr-only">(current)</span>
+        </a>
     </ul>
     <div class="nav-item dropdown navbar-account">
       <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -22,9 +26,28 @@
         <a *ngIf="!loggedIn" class="dropdown-item" (click)="navigateToLogin()">Login</a>
       </div>
     </div>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+    <ng-form class="form-inline my-2 my-lg-0" (submit)="searchClick($event)">
+<!--      <input #searchInput list="searchList" class="form-control mr-sm-2" (keyup)="search($event)"
+             type="text" placeholder="Search" aria-label="Search" name="search">-->
+      <input type="text" class="mr-sm-2" aria-label="Search" (keyup)="search($event)">
+      <div *ngIf="searchTags.length > 0 || searchAccounts.length > 0">
+        <ul>
+          <li *ngFor="let tag of searchTags"><a (click)="navigateToTag(tag.tag)">#{{ tag.tag }}</a></li>
+          <li *ngFor="let account of searchAccounts"><a (click)="navigateToUser(account.username)">@{{ account.username }}</a></li>
+        </ul>
+      </div>
+
+
+
+<!--      <datalist id="searchList">
+        <option class="search-result-account" *ngFor="let account of searchAccounts"
+                [value]="'@' + account.username" (click)="navigateToUser(account.username)">@{{account.username}}</option>
+        <option [value]="'-&#45;&#45;'" disabled="disabled">&#45;&#45;&#45;&#45;</option>
+        <option class="search-result-tag" *ngFor="let tag of searchTags" [value]="'#'+tag.tag">
+          <app-hashtag [tag]="tag.tag"></app-hashtag>
+        </option>
+      </datalist>-->
+      <button class="btn btn-outline-success my-2 my-sm-0" (click)="searchClick(searchInput)" type="submit">Search</button>
+    </ng-form>
   </div>
 </nav>

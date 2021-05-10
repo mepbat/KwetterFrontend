@@ -29,6 +29,7 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { TrendsComponent } from './start/trends/trends.component';
 import { TagComponent } from './tag/tag.component';
 import { HashtagComponent } from './components/hashtag/hashtag.component';
+import { AdminComponent } from './admin/admin.component';
 
 @Pipe({
   name: 'timeAgo',
@@ -61,6 +62,7 @@ export class TimeAgoExtendsPipe extends TimeAgoPipe {
     TrendsComponent,
     TagComponent,
     HashtagComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,

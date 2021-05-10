@@ -22,4 +22,8 @@ export class TagService {
   getTrends(): Observable<any>{
     return this.http.get<any>(environment.api + 'tag/' + 'trends', httpOptions)
   }
+
+  searchTags(searchInput: string): Observable<any>{
+    return this.http.get<any>(environment.api + 'tag/' + 'search/' + searchInput, httpOptions)
+  }
 }

@@ -16,9 +16,9 @@ export class RoleguardService implements CanActivate{
       let role = this.tokenStorage.getRole()
       if (role !== 'admin') {
         this.router.navigate(['login'], {queryParams: {returnUrl: state.url}});
-        return true;
+        return false;
       }
     }
-    return false;
+    return true;
   }
 }

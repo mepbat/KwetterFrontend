@@ -27,6 +27,7 @@ export class ProfileComponent {
         },
         error => {
           console.log(error);
+          this.router.navigate([''])
         }
       )
     }
