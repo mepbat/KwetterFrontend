@@ -30,6 +30,7 @@ import { TrendsComponent } from './start/trends/trends.component';
 import { TagComponent } from './tag/tag.component';
 import { HashtagComponent } from './components/hashtag/hashtag.component';
 import { AdminComponent } from './admin/admin.component';
+import {MatIconModule} from '@angular/material/icon';
 
 @Pipe({
   name: 'timeAgo',
@@ -73,7 +74,8 @@ export class TimeAgoExtendsPipe extends TimeAgoPipe {
     HttpClientModule,
     ReactiveFormsModule,
     CommonModule,
-    RouterModule
+    RouterModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -40,22 +40,30 @@ export class AdminComponent implements OnInit {
     this.credentialsShown = this.filterItems(this.credentials, this.searchName);
   }
 
-  activate(){
-    for(let credentials of this.selectedCredentials){
+  async activate(){
+    for await(let credentials of this.selectedCredentials){
       this.authService.activate(credentials.username).subscribe();
     }
+   this.reload();
   }
 
   deactivate(){
     for(let credentials of this.selectedCredentials){
       this.authService.deactivate(credentials.username).subscribe();
     }
+    this.reload();
   }
 
   promote(){
     for(let credentials of this.selectedCredentials){
       this.authService.promote(credentials.username).subscribe();
     }
+    this.reload();
   }
 
+  reload(){
+    setTimeout(function(){
+      location.reload();
+    },200);
+  }
 }

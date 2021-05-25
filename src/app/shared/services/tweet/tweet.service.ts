@@ -49,4 +49,21 @@ export class TweetService {
     return this.http.get<any>(environment.api + 'tweet/' + 'getByTag/' + tag, httpOptions);
   }
 
+  hasHearted(tweetId: string, userId: string): Observable<any>{
+    return this.http.get<any>(environment.api + 'tweet/' + 'hasHearted/' + tweetId + '/' + userId, httpOptions);
+  }
+
+  heart(tweetId: string, userId: string): Observable<any>{
+    return this.http.post<any>(environment.api + 'tweet/' + 'heart', {
+      tweetId: tweetId,
+      userId: userId
+    }, httpOptions);
+  }
+
+  unheart(tweetId: string, userId: string): Observable<any>{
+    return this.http.post<any>(environment.api + 'tweet/' + 'unheart', {
+      tweetId: tweetId,
+      userId: userId
+    });  }
+
 }

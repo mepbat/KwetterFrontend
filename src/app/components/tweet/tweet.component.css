@@ -7,6 +7,13 @@
   float: right;
 }
 
+.tweet-heart{
+  float: right;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+
 .tweet-text{
   word-wrap: anywhere;
 }

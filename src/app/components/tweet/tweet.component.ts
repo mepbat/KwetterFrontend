@@ -3,6 +3,8 @@ import {Tweet} from 'src/app/shared/models/tweet';
 import {TimeAgoExtendsPipe} from '../../app.module';
 import {Router} from '@angular/router';
 import {of} from 'rxjs';
+import {TweetService} from '../../shared/services/tweet/tweet.service';
+import {TokenStorageService} from '../../shared/services/token-storage/token-storage.service';
 
 @Component({
   selector: 'app-tweet',
@@ -11,13 +13,14 @@ import {of} from 'rxjs';
 })
 export class TweetComponent implements OnChanges{
   @Input() tweet = {} as Tweet;
+  hearted = false as boolean;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private tweetService: TweetService, private tokenService: TokenStorageService) {
 
   }
 
   navigateToUser(username: string) {
-    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() =>
+    this.router.navigateByUrl('/',  {skipLocationChange: true}).then(() =>
       this.router.navigate(['profile', username]));
   }
 
@@ -40,7 +43,33 @@ export class TweetComponent implements OnChanges{
         let final = time + (-Math.abs(this.tweet.date.getTimezoneOffset() * 60000));
         this.tweet.date = new Date(final);
       }
+      this.tweetService.hasHearted(this.tweet.id.toString(), this.tokenService.getId()).subscribe(
+        data => {
+          this.hearted = data;
+        },error => {
+          console.log(error);
+        }
+      )
     }
   }
 
+  heartTweet(){
+    this.tweetService.heart(this.tweet.id.toString(), this.tokenService.getId()).subscribe(
+      data =>{
+        this.hearted = true;
+      },
+      error => {
+        console.log(error);
+      });
+  }
+
+  unheartTweet(){
+    this.tweetService.unheart(this.tweet.id.toString(), this.tokenService.getId()).subscribe(
+      data =>{
+        this.hearted = false;
+      },
+      error => {
+        console.log(error);
+      });
+  }
 }

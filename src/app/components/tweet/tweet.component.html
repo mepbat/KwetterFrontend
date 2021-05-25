@@ -1,5 +1,7 @@
 <div class="tweet">
   <b (click)="navigateToUser(tweet.username)" class="tweet-username">{{tweet.username}}</b>
+  <a *ngIf="!hearted" (click)="heartTweet()"><mat-icon class="tweet-heart">favorite_border</mat-icon></a>
+  <a *ngIf="hearted" (click)="unheartTweet()"><mat-icon class="tweet-heart">favorite</mat-icon></a>
   <label class="tweet-date">{{tweet.date.toISOString() | timeAgo}}</label>
   <br/>
   <label class="tweet-text">{{tweet.text}}</label>
