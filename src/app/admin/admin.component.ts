@@ -20,7 +20,6 @@ export class AdminComponent implements OnInit {
   ngOnInit(): void {
     this.authService.getAll().subscribe(
       data => {
-        console.log(data);
         this.credentials = data as Credentials[];
         this.credentialsShown = data as Credentials[];
       },

@@ -3,6 +3,7 @@
   <h3>Accounts</h3>
   <input type="text" value="Filter on username" [(ngModel)]="searchName" (ngModelChange)="search()">
   <mat-selection-list #list [(ngModel)]="selectedCredentials" >
+    <span class="mat-tab-label tab-name">Username</span><span class="mat-tab-label tab-name">Role</span><span class="mat-tab-label tab-name">Active</span>
     <mat-list-option checkboxPosition="before" *ngFor="let credentials of credentialsShown" [value]="credentials">
       <div class="row">
       <span class="username col">{{credentials.username}}</span>

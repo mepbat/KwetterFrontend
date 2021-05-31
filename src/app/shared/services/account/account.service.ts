@@ -1,17 +1,24 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Account} from '../../models/account';
 import {Observable} from 'rxjs';
 import {environment} from '../../../../environments/environment';
-
+import {TokenStorageService} from '../token-storage/token-storage.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccountService {
 
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer '+ this.tokenStorage.getToken()
+    })
+  };
+
   constructor(
-    private http: HttpClient) {
+    private http: HttpClient, private tokenStorage: TokenStorageService) {
   }
 
   getAccountByUsername (username: string): Observable<Account>{
@@ -27,6 +34,6 @@ export class AccountService {
   }
 
   getAll(): Observable<any> {
-    return this.http.get<any>(environment.api + 'account')
+    return this.http.get<any>(environment.api + 'account', this.httpOptions)
   }
 }

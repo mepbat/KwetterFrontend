@@ -35,7 +35,7 @@ export class AuthService {
   }
 
   getAll(): Observable<any>{
-    return this.http.get(environment.api + 'credentials/' + 'getAll');
+    return this.http.get(environment.api + 'credentials/' + 'getAll', this.httpOptions);
   }
 
   activate(username: string): Observable<any>{

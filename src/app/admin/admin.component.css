@@ -17,3 +17,7 @@ mat-selection-list {
   width: 600px;
   overflow: auto;
 }
+
+.tab-name{
+  margin: 0 63px 0 63px ;
+}
