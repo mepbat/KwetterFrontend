@@ -4,6 +4,7 @@ import {TweetService} from '../../shared/services/tweet/tweet.service';
 import {Tweet} from '../../shared/models/tweet';
 import {StartComponent} from '../start.component';
 import {TimelineComponent} from '../timeline/timeline.component';
+import {QuoteService} from '../../shared/services/quote/quote.service';
 
 @Component({
   selector: 'app-post-tweet',
@@ -13,7 +14,7 @@ import {TimelineComponent} from '../timeline/timeline.component';
 export class PostTweetComponent implements OnInit {
   tweet = {} as Tweet;
 
-  constructor(private tokenService:  TokenStorageService, private tweetService: TweetService) {
+  constructor(private tokenService:  TokenStorageService, private tweetService: TweetService, private quoteService: QuoteService) {
   }
 
   ngOnInit(): void {
@@ -37,5 +38,16 @@ export class PostTweetComponent implements OnInit {
 
   convertTZ(date: any, tzString: string) {
     return new Date((typeof date === "string" ? new Date(date) : date).toLocaleString("en-US", {timeZone: tzString}));
+  }
+
+  randomQuote(){
+    this.quoteService.getQuote().subscribe(
+      data => {
+        this.tweet.text = data.message + ' - Donald Trump'
+      },
+      error => {
+        console.log(error);
+      }
+    )
   }
 }

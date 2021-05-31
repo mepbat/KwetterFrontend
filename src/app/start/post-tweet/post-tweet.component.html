@@ -7,7 +7,9 @@
 <textarea placeholder="What's Happening?" class="tweet-text form-control" name="tweet-text"
           [(ngModel)]="tweet.text" maxlength="140"></textarea>
       </label>
+      <br>
       <button class="post-button" type="submit" mat-button>Post</button>
+      <button class="post-button" type="button" mat-button (click)="randomQuote()">Trump Quote</button>
     </form>
   </div>
 </div>
