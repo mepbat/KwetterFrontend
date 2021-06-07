@@ -3,14 +3,9 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Follow} from '../../models/follow';
 import {Observable, Subject} from 'rxjs';
 import {environment} from '../../../../environments/environment';
+import {TokenStorageService} from '../token-storage/token-storage.service';
 
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type': 'application/json',
-    'accept': 'text/plain',
-    'responseType': 'text'
-  })
-};
+
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +13,24 @@ const httpOptions = {
 export class FollowService {
   private subjectName = new Subject<any>(); //need to create a subject
 
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer '+ this.tokenService.getToken()
+    })
+  };
+
+  httpOptionsText = {
+    headers: new HttpHeaders({
+      'Content-Type': 'text',
+      'accept': 'text/plain',
+      'responseType': 'text',
+      'Authorization': 'Bearer '+ this.tokenService.getToken()
+    })
+  };
+
   constructor(
-    private http: HttpClient
+    private http: HttpClient, private tokenService: TokenStorageService
   ) {
   }
 
@@ -32,22 +43,22 @@ export class FollowService {
   }
 
   follow (follow: Follow): Observable<any>{
-    return this.http.post<Follow>(environment.api + 'follow/', follow)
+    return this.http.post<Follow>(environment.api + 'follow/', follow, this.httpOptions)
   }
 
   unfollow (follow: Follow): Observable<any>{
-    return this.http.post( environment.api + 'follow/unfollow', follow, {responseType: 'text'});
+    return this.http.post( environment.api + 'follow/unfollow', follow, this.httpOptionsText);
   }
 
   isFollowing(accountId: string, followingAccountId: number): Observable<any> {
-    return this.http.get<any>(environment.api + 'follow/isFollowing/' + accountId + '/' + followingAccountId)
+    return this.http.get<any>(environment.api + 'follow/isFollowing/' + accountId + '/' + followingAccountId, this.httpOptions)
   }
 
   getFollowers(accountId: string): Observable<any>{
-    return this.http.get<any>(environment.api + 'follow/followers/' + accountId)
+    return this.http.get<any>(environment.api + 'follow/followers/' + accountId, this.httpOptions)
   }
 
   getFollowing(accountId: string): Observable<any>{
-    return this.http.get<any>(environment.api + 'follow/following/' + accountId)
+    return this.http.get<any>(environment.api + 'follow/following/' + accountId, this.httpOptions)
   }
 }

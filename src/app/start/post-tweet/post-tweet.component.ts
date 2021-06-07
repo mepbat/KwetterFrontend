@@ -43,6 +43,7 @@ export class PostTweetComponent implements OnInit {
   randomQuote(){
     this.quoteService.getQuote().subscribe(
       data => {
+        console.log(data);
         this.tweet.text = data.message + ' - Donald Trump'
       },
       error => {
